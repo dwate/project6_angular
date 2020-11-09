@@ -1,0 +1,36 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading" class="col-sm-6 offset-sm-3 mt-2">
+  <form [formGroup]="sauceForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" placeholder="The name of the sauce" id="name" formControlName="name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="manufacturer">Manufacturer</label>
+      <input type="text" id="manufacturer" class="form-control" formControlName="manufacturer">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea name="description"
+                id="description"
+                cols="30" rows="7"
+                class="form-control"
+                formControlName="description"
+                placeholder="Description of Sauce"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="heat">Heat</label>
+      <input type="number" id="heat" class="form-control" formControlName="heat" max="10" min="0">
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">Image URL</label>
+      <input type="text" placeholder="http://..." id="imageUrl" formControlName="imageUrl" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="mainPepper">Main Pepper</label>
+      <input type="text" id="mainPepper" class="form-control" formControlName="mainPepper">
+    </div>
+    <button class="btn btn-primary" (click)="onSubmit()" [disabled]="sauceForm.invalid">Submit</button>
+    <p class="alert-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>

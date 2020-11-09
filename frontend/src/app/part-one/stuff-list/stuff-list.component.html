@@ -1,0 +1,17 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<p class="text-center" *ngIf="sauce.length <= 0 && !loading">No Sauces</p>
+<div class="stuff-grid" *ngIf="sauce.length >= 0">
+  <div class="thing-pane"
+       *ngFor="let sauce of sauce"
+       [ngClass]="{'open': sauce._id === chosenId}"
+       [ngStyle]="{'background-image': 'url(' + sauce.imageUrl + ')'}"
+       (click)="onProductClicked(sauce._id)">
+    <div class="thing-info">
+      <h3>
+        {{ sauce.name }}
+      </h3>
+      <h5>{{ sauce.manufacturer }}</h5>
+      <h5>Heat {{ sauce.heat }} /10</h5>
+    </div>
+  </div>
+</div>

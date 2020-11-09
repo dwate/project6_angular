@@ -1,0 +1,28 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading" >
+  <button class="btn btn-link" (click)="onGoBack()"><< Back</button>
+  <div class="single-thing-pane">
+    <img [src]="sauce?.imageUrl" alt="">
+    <div class="single-thing-info" >
+      <h1>{{ sauce?.name }}</h1>
+      <h2 class="single-thing-price">{{ sauce?.manufacturer }}</h2>
+      <p>{{ sauce?.description }}</p>
+      <div class="likingThumbs"  *ngIf="!likePending">
+        <div class="likes">
+          <i style="font-size:24px" [ngClass]="{ 'fas liked': liked, 'far': !liked, 'disabled': disliked }" class="fa" id="lthumb" (click)="onLike()">&#xf087;</i>
+          <span class="likesTotal"> {{ sauce?.likes}} </span>
+        </div>
+        <div class="dislikeThumbs">
+          <i style="font-size:24px" [ngClass]="{ 'fas disliked': disliked, 'far': !disliked, 'disabled': liked }" class="fa" id="dthumb" (click)="onDislike()">&#xf165;</i>
+          <span class="dislikesTotal"> {{ sauce?.dislikes }} </span>
+        </div>
+      </div>
+      
+      <button class="btn btn-success m-1" (click)="onModify()" [disabled]="part >= 3 && userId !== sauce?.userId">Modify</button>
+      <button class="btn btn-danger m-1" (click)="onDelete()" [disabled]="part >= 3 && userId !== sauce?.userId">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="testDiv"> </div>
+
